@@ -37,7 +37,7 @@ class ConfiguratorRouter {
             return this.cmapp.addonExist(res, `There is no such addon as ${addonName}`)
         }
 
-        const addons = getAddonsFromReq(req);
+        const addons = this.cmapp.getAddonsFromReq(req);
         if(addons.includes(addonName)){
             return this.cmapp.addonExist(res, `${addonName} is already on your cookie. You cant add it twice`)
         }
@@ -53,7 +53,7 @@ class ConfiguratorRouter {
     deleteAddon= (req,res) => {
         const {addonName} = req.params;
 
-        const oldAddons = getAddonsFromReq(req);
+        const oldAddons = this.cmapp.getAddonsFromReq(req);
 
         if(!oldAddons.includes(addonName)){
             return this.cmapp.addonExist(res, `Cannot delete something that isn't already added to the cookie ${addonName} `)
