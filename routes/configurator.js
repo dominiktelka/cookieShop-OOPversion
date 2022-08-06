@@ -29,7 +29,7 @@ class ConfiguratorRouter {
             .render('configurator/base-selected',{
                 baseName,
             });
-    }
+    };
 
     getAddon= (req,res) => {
         const {addonName} = req.params;
@@ -48,7 +48,7 @@ class ConfiguratorRouter {
             .render('configurator/added',{
                 addonName,
             });
-    }
+    };
 
     deleteAddon= (req,res) => {
         const {addonName} = req.params;
@@ -66,7 +66,7 @@ class ConfiguratorRouter {
                 addonName,
             });
     }
-}
+};
 
 module.exports = {
     ConfiguratorRouter,
