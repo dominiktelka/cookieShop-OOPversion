@@ -14,7 +14,7 @@ class OrderRouter {
     }
 
     sumary = (req, res) => {
-        const {sum, addons, base,allBases, allAddons} = getCookieSettings(req)
+        const {sum, addons, base,allBases, allAddons} = this.cmapp.getCookieSettings(req)
 
         res.render('order/summary',{
             cookie: {
@@ -27,7 +27,7 @@ class OrderRouter {
         })
     }
     thanks = (req,res) => {
-        const {sum} = getCookieSettings(req)
+        const {sum} = this.cmapp.getCookieSettings(req)
         res
             .clearCookie('cookieBase')
             .clearCookie('cookieAddons')
