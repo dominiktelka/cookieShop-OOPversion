@@ -37,17 +37,6 @@ class OrderRouter {
     }
 }
 
-
-const orderRouter = express.Router();
-
-orderRouter
-    .get('/summary',(req,res) =>{
-})
-
-.get('/thanks', (req,res) =>{
-
-})
-
 module.exports = {
     OrderRouter,
 }
