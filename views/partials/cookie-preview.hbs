@@ -1,0 +1,4 @@
+{{#with cookie}}
+<div class="cookie-preview" style="background: {{#each addons}}url('/assets/images/{{this}}.png'), {{/each}} url('/assets/images/empty-{{base}}.png')"></div>
+{{/with}}
+{{!-- za pomoca each tworzymy petle ktora wstawia nam za kazdym razem inny addon pod this w rezultacie dynamicznie zmienia nam podglad dodatkow ktore uzywamy --}}

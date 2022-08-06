@@ -1,0 +1,15 @@
+<h3>Selected parts of cookie</h3>
+<ul>
+
+    <li>Base: {{cookie.base}} - {{ pricify (find-price allBases cookie.base)}} PLN</li>
+    {{!-- w tym wypadku wysiwtlamy tablice cookie z konkretnym wskazaniem na base ktore znajduje sie w home.js, nastepnie mamy uzyty helper find-price(zdefiniowany w handlebars-helper) ktory odnosi sie do tablicy   tablic - bases i szuka w nim konkretnego produktu ktory jest wskazany przy uzyciu destrukturyzacji cookie.bases--}}
+
+    {{#each cookie.addons}}
+        <li> Addon: {{this}} - {{pricify (find-price @root.allAddons this)}} PLN</li>
+    {{/each}}
+
+</ul>
+
+<p>
+    <strong>Total of {{pricify sum}} PLN </strong>
+</p>
