@@ -1,12 +1,19 @@
 const express = require('express');
 
-function getCookieSetting(){}
+class OrderRouter {
+    constructor(cmapp) {
+        this.cmapp = cmapp
+        this.router = express.Router();
+        console.log(this.setUpRoutes)
+        this.setUpRoutes();
+    }
 
+    setUpRoutes(){
+        this.router.get('/summary', this.sumary)
+        this.router.get('/thanks', this.thanks)
+    }
 
-const orderRouter = express.Router();
-
-orderRouter
-    .get('/summary',(req,res) =>{
+    sumary = (req, res) => {
         const {sum, addons, base,allBases, allAddons} = getCookieSettings(req)
 
         res.render('order/summary',{
@@ -18,20 +25,31 @@ orderRouter
             allAddons,
             sum,
         })
+    }
+    thanks = (req,res) => {
+        const {sum} = getCookieSettings(req)
+        res
+            .clearCookie('cookieBase')
+            .clearCookie('cookieAddons')
+            .render('order/thanks',{
+                sum,
+            })
+    }
+}
+
+
+const orderRouter = express.Router();
+
+orderRouter
+    .get('/summary',(req,res) =>{
 })
 
 .get('/thanks', (req,res) =>{
-    const {sum} = getCookieSettings(req)
-    res
-        .clearCookie('cookieBase')
-        .clearCookie('cookieAddons')
-        .render('order/thanks',{
-        sum,
-    })
+
 })
 
 module.exports = {
-    orderRouter,
+    OrderRouter,
 }
 
 // tu tworzymy funckej odpwoiedzialna za odbieranie i przesylanie na backend odpowiedzi od serwera uzywajac metody post
